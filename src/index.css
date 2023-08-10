@@ -1,7 +1,8 @@
 :root {
   --primary-font:'Libre Franklin', sans-serif;
-  --sencondary-font:font-family: 'Barlow', sans-serif;
+  --sencondary-font:'Barlow', sans-serif;
   --bg-color: #000000;
+  --sc-bg-color: #F1F6F9;
   --border-color: #3E065F;
   --primary-color: #8E05C2;
   --secondary-color: #700B97;
@@ -31,7 +32,8 @@
   
   body {
     margin: 0;
-    /* background-color: var(--bg-color); */
+    background-color: var(--bg-color);
+    color: F1F6F9;
   }
   
   /**
@@ -49,7 +51,13 @@
   
   h1 {
     font-size: 2em;
-    margin: 0.67em 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
   }
   
   /* Grouping content
