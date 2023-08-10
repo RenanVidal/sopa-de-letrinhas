@@ -1,9 +1,8 @@
 .card {
     display: flex;
     flex-direction: column;
-    border-radius: px;
-    width: 280px;
-    height: 145px;
+    width: 17.5rem;
+    height: 9.06rem;
 }
 
 .heading {
