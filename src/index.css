@@ -1,3 +1,12 @@
+:root {
+  --primary-font:'Libre Franklin', sans-serif;
+  --sencondary-font:font-family: 'Barlow', sans-serif;
+  --bg-color: #000000;
+  --border-color: #3E065F;
+  --primary-color: #8E05C2;
+  --secondary-color: #700B97;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -22,6 +31,7 @@
   
   body {
     margin: 0;
+    /* background-color: var(--bg-color); */
   }
   
   /**

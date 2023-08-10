@@ -1,34 +1,20 @@
 import { data } from './data';
 import app from './app.module.css';
+import Cards from './Components/Cards';
 
 
-function cards() {
+function App() {
   
-    // const valor = data.map(item => {
-    //   return (
-    //     <div className={app.title}>
-    //       <h1>{data[0].product_name}</h1>
-    //     </div>
-    //   )
-    // });
+      const listItens = data.map(item => 
+        <Cards item={item} /> 
+      );
 
-    const item = data[0];
+     return (
+        <main className={app.card}>
+          {listItens}
+        </main>
+     );
 
-    return (
-      <div className={app.card}>
-        <h1 className={app.title}>{item.product_name}</h1>
-        <p>{item.product_category}</p>
-        <p>{item.product_subcategory}</p>
-        <p>{item.price}</p>
-      </div>
-    )
 }
-
-export default function App() {
-  return (
-    <section>
-      
-    </section>
-  );
-}
+export default App;
 

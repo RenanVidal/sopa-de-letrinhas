@@ -1,9 +1,10 @@
 .card {
     display: flex;
-    flex-direction: column;
-    border: 1px #000000 solid;
+    flex-wrap: wrap;
+    gap: 1rem;
     border-radius: 5px;
     padding: .5rem;
+    box-sizing: border-box;
 
 }
 
