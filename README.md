@@ -2,7 +2,7 @@
 
    Olá!
 
-   Esse aqui é o meu repositório Sopa de Letrinhas, o nome é uma brincadeira minha devido a este projeto ser todo focado na mentoria que estou recebendo do **[@JVictorV]**(https://github.com/JVictorV).
+   Esse aqui é o meu repositório Sopa de Letrinhas, o nome é uma brincadeira minha devido a este projeto ser todo focado na mentoria que estou recebendo do **@JVictorV**.
 
    E como gosto de falar a metodologia do Joãozinho é muito focada no detalhe, onde ele vem me passando tudo com maior cuidado explicando cada coisa minuciosamente, me passando tudo com a maior calma, abordando para que serve cada coisa e como ela funciona no backstage do processo. Este projeto tem como objetivo abordar tudo para que eu consiga me desenvolver num nível profissional e como vai abordar várias coisas por isso pensei "Legal vou aprender de A à Z, vai ser uma sopa de letrinhas todo esse processo!" e então ficou esse o nome.
 
