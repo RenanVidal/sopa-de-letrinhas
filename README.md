@@ -1,32 +1,22 @@
-# React + TypeScript + Vite
+# Sopa de Letrinhas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+   Olá!
 
-Currently, two official plugins are available:
+   Esse aqui é o meu repositório Sopa de Letrinhas, o nome é uma brincadeira minha devido a este projeto ser todo focado na mentoria que estou recebendo do **[@JVictorV]**(https://github.com/JVictorV).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   E como gosto de falar a metodologia do Joãozinho é muito focada no detalhe, onde ele vem me passando tudo com maior cuidado explicando cada coisa minuciosamente, me passando tudo com a maior calma, abordando para que serve cada coisa e como ela funciona no backstage do processo. Este projeto tem como objetivo abordar tudo para que eu consiga me desenvolver num nível profissional e como vai abordar várias coisas por isso pensei "Legal vou aprender de A à Z, vai ser uma sopa de letrinhas todo esse processo!" e então ficou esse o nome.
 
-## Expanding the ESLint configuration
+   Alguém deve estar se perguntando *"Ah mas Renan você já não viu um monte dessas coisas que estão nesse projeto?"*
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   A resposta é **sim**, mais ver não é o mesmo que aprender em profundidade e olha que do jeito que tudo tá me sendo proposto, eu estou realmente aprendendo detalhes que quando vi determinados tópicos nos meus estudos anteriores eu não tinha captado.
 
-- Configure the top-level `parserOptions` property like this:
+   E esse projeto irá me acompanhar nessa minha nova fase dos **#100DiasDeCódigo**.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+   *Então, borá lá?*
 
 
-#Paleta de cores:
+## Detalhes do Projeto
 
-- https://colorhunt.co/palette/0000003e065f700b978e05c2
+### Paleta de cores:
+
+   - https://colorhunt.co/palette/0000003e065f700b978e05c2
