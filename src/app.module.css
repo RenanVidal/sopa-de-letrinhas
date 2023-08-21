@@ -19,3 +19,8 @@
     margin: 0;
     padding: 0;
 }
+
+.searchBar {
+    width: 35.5rem;
+    height: 1.5rem;
+}
