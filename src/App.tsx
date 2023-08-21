@@ -17,7 +17,7 @@ function App() {
       <input
         className={app.searchBar}
         value={search}
-        onChange={e => setSearch(e.target.value)}
+        onChange={e => setSearch(e.currentTarget.value)}
       />
       {listItens}
     </main>
