@@ -1,6 +1,8 @@
 import card from './card.module.css';
 
 export default function Card({ item }) {
+
+  
   return (
     <div className={card.card}>
         <div className={card.heading}>
