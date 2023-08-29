@@ -32,7 +32,6 @@ export default function App() {
   }
 
   const handleFilterMenu = (e) => {
-  
     const newFilter = dataBases.filter(newList => newList.product_category.toUpperCase() === e.currentTarget.value.toUpperCase())
     setDataNew(newFilter);
   }
