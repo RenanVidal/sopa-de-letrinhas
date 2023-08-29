@@ -22,12 +22,18 @@ const listSubcategory = dataBases.filter((listSub) => {
 export default function App() {
   
   const [search, setSearch] = useState ('');
-  const [filteredList, setFilteredLid] = useState({});
+  const [filteredList, setFilteredList] = useState({});
+  const [dataNew, setDataNew] = useState(dataBases);
   
   const handleFilter = (e) => {
     setSearch(e.currentTarget.value);
-    const filtered = dataBases.filter(list => list.product_name.toUpperCase() === search.toUpperCase());
-    setFilteredLid(filtered);
+    const filtered = dataNew.filter(list => list.product_name.toUpperCase() === search.toUpperCase());
+    setFilteredList(filtered);
+  }
+
+  const handleFilterMenu = (e) => {
+    const newFilter = dataBases.filter(newList => newList.product_category.toUpperCase() === e.currentTarget.value.toUpperCase())
+    setDataNew(newFilter);
   }
 
   return (
@@ -39,19 +45,27 @@ export default function App() {
       />
       <aside className={app.filters}>
         <ul className={app.list}>
+          <li>Categoria</li>
           {listCategory.map((item) => {
             return (
               <li>
-                <p><input type="checkbox" className={app.chkInp}/>{item.product_category}</p>
+                <p>
+                  <input 
+                    type="checkbox" 
+                    className={app.chkInp} 
+                    value={item.product_category} 
+                    onClick={handleFilterMenu}
+                  />
+                  {item.product_category}
+                </p>
                 <ul>
-                  
                 </ul>
               </li>
             )
           })}
         </ul>
       </aside>
-      {search === '' ? dataBases.map(item =>
+      {search === '' ? dataNew.map(item =>
         <Card item={item} />
       ) : filteredList.map(item =>
         <Card item={item} />
