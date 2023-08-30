@@ -24,16 +24,18 @@ export default function App() {
   const [search, setSearch] = useState ('');
   const [filteredList, setFilteredList] = useState({});
   const [dataNew, setDataNew] = useState(dataBases);
+  const [ check, setCheck] = useState(null);
   
   const handleFilter = (e) => {
     setSearch(e.currentTarget.value);
-    const filtered = dataNew.filter(list => list.product_name.toUpperCase() === search.toUpperCase());
+    const filtered = dataNew.filter(list => list.product_name.toUpperCase() === e.currentTarget.value.toUpperCase());
     setFilteredList(filtered);
   }
 
   const handleFilterMenu = (e) => {
     const newFilter = dataBases.filter(newList => newList.product_category.toUpperCase() === e.currentTarget.value.toUpperCase())
     setDataNew(newFilter);
+    setCheck(e.currentTarget.value);
   }
 
   return (
@@ -48,16 +50,17 @@ export default function App() {
           <li>Categoria</li>
           {listCategory.map((item) => {
             return (
-              <li>
-                <p>
+              <li key={item.product_category}>
+                <label>
                   <input 
                     type="checkbox" 
                     className={app.chkInp} 
-                    value={item.product_category} 
+                    value={item.product_category}
+                    checked = {check === item.product_category}
                     onClick={handleFilterMenu}
                   />
                   {item.product_category}
-                </p>
+                </label>
                 <ul>
                 </ul>
               </li>
