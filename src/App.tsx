@@ -49,6 +49,8 @@ export default function App() {
     }
   }
 
+  /// permitir selecionar um subitem, após selecionado o sub item realizar um novo filtro e exibir na tela  
+
   return (
     <main className={app.card}>
       <input
@@ -72,20 +74,22 @@ export default function App() {
                   />
                   {category}
                 </label>
-                <ul>
-                  {subcategoryItem.map((subcategory) =>
-                    <label>
-                      <input 
-                        type="checkbox" 
-                        className={app.chkInp} 
-                        value={subcategory}
-                        checked={inputChecked === subcategory}  
-                        onClick={handleFilterMenu}
-                      />
-                      {subcategory}
-                    </label>
-                  )}
-                </ul>
+                {inputChecked === category ? 
+                  <ul>
+                    {subcategoryItem.map((subcategory) =>
+                      <label>
+                        <input 
+                          type="checkbox" 
+                          className={app.chkInp} 
+                          value={subcategory}
+                          checked={inputChecked === subcategory}  
+                          onClick={handleFilterMenu}
+                        />
+                        {subcategory}
+                      </label>
+                    )}
+                  </ul> : null
+                }
               </li>
             )
           })}
