@@ -13,41 +13,47 @@ export default function App() {
   const [search, setSearch] = useState ('');
   const [filteredList, setFilteredList] = useState(dataBases);
   const [categoryChecked, setCategoryChecked] = useState(null);
-  const [subcategoryChecked, setSubcategoryChecked] = useState(null);
+  const [subcategoryChecked, setSubcategoryChecked] = useState("");
   const [subcategoryItem, setSubcategoryItem] = useState([]);
 
   const handleFilter: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setSearch(event.currentTarget.value);
-    if (event.currentTarget.value || event.currentTarget.value === "") {
-      setFilteredList(filteredList);
-      return;
+    
+    if (event.currentTarget.value === "") {
+        return filteredList;
+    } else {
+      const filtered = filteredList.filter(list => 
+        list.product_name.toLowerCase().startsWith(
+          search.toLowerCase()
+        )
+      );
+      setFilteredList(filtered);  
     }
-    const filtered = filteredList.filter(list => 
-      list.product_name.toLowerCase().startsWith(
-        event.currentTarget.value.toLowerCase()
-      )
-    );
-    setFilteredList(filtered);
   }
 
   const handleFilterCategory: React.MouseEventHandler<HTMLInputElement> = (event) => {
     
-    const clickedFilter = event.currentTarget.value;
+    const clickedFilter: string = event.currentTarget.value;
     
     if (categoryChecked !== clickedFilter) { 
+      
       const newFilter =
       dataBases.filter(newList => newList.product_category.toLowerCase() === clickedFilter.toLowerCase())
       setFilteredList(newFilter);
       setCategoryChecked(clickedFilter);
+
       const subcategoryItens = dataBases.filter(itens => itens.product_category.toLowerCase() === clickedFilter.toLowerCase());
       const filteredSubcategories = subcategoryItens.map(item => item.product_subcategory);
       const setSubcategory = new Set(filteredSubcategories);
       const listSubcategory = [...setSubcategory]
       setSubcategoryItem(listSubcategory);
+
     } else { 
+      
       setCategoryChecked(null);
       setFilteredList(dataBases);
       setSubcategoryItem([]);
+    
     }
 
   }
@@ -57,18 +63,21 @@ export default function App() {
     const clickedFilter = event.currentTarget.value;
     
     if (subcategoryChecked !== clickedFilter) { 
+      
       const newFilter =
         dataBases.filter(newList => 
           newList.product_subcategory.toLowerCase() === clickedFilter.toLowerCase());
       setFilteredList(newFilter);
       setSubcategoryChecked(clickedFilter);
+    
     } else { 
+      
       setSubcategoryChecked(null);
       setFilteredList(dataBases);
+    
     }
 
-  }
-  /// permitir selecionar um subitem, após selecionado o sub item realizar um novo filtro e exibir na tela  
+  } 
 
   return (
     
@@ -93,7 +102,7 @@ export default function App() {
                 <label>
                   <input 
                     type="checkbox" 
-                    className={app.chkInp} 
+                    className={app.inputCheckbox} 
                     value={category}
                     checked={categoryChecked === category}
                     onClick={handleFilterCategory}
@@ -107,7 +116,7 @@ export default function App() {
                       <label>
                         <input 
                           type="checkbox" 
-                          className={app.chkInp} 
+                          className={app.inputCheckbox} 
                           value={subcategory}
                           checked={subcategoryChecked === subcategory}  
                           onClick={handleFilterSubcategory}
