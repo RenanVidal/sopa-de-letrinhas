@@ -8,6 +8,7 @@ export default function Card({ item }) {
         <div className={card.heading}>
           <h1 className={card.title}>{item.product_name}</h1>
           <p>Categoria: {item.product_category}</p>
+          <p> Subcategoria: {item.product_subcategory}</p>
         </div>
         <div className={card.baseboard}>
           <p>Preço: R$ {item.price}</p>
