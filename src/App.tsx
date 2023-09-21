@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { data } from './data';
 import app from './app.module.css';
 import Card from './Components/Cards';
+import SearchBar from './Components/SearchBar';
 
 const dataBases = [...data];
 const filteredCategories = dataBases.map(item => item.product_category);
@@ -12,18 +13,19 @@ export default function App() {
 
   const [search, setSearch] = useState ('');
   const [filteredList, setFilteredList] = useState(dataBases);
-  const [categoryChecked, setCategoryChecked] = useState(null);
-  const [subcategoryChecked, setSubcategoryChecked] = useState("");
-  const [subcategoryItem, setSubcategoryItem] = useState([]);
+  const [categoryChecked, setCategoryChecked] = useState<string | null>(null);
+  const [subcategoryChecked, setSubcategoryChecked] = useState<string | null>("");
+  const [subcategoryItem, setSubcategoryItem] = useState <string[] | null>([]);
 
   const handleFilter: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setSearch(event.currentTarget.value);
     
     if (event.currentTarget.value === "") {
+        console.log(event.currentTarget.value);
         return filteredList;
     } else {
       const filtered = filteredList.filter(list => 
-        list.product_name.toLowerCase().startsWith(
+        list.product_name.toLowerCase().includes(
           search.toLowerCase()
         )
       );
@@ -83,11 +85,7 @@ export default function App() {
     
     <main className={app.card}>
       
-      <input
-        className={app.searchBar}
-        value={search}
-        onChange={handleFilter}
-      />
+      <SearchBar style={app.searchBar} search={search} handleFilter={handleFilter}  />
       
       <aside className={app.filters}>
       
@@ -112,18 +110,19 @@ export default function App() {
                 
                 {categoryChecked === category ? 
                   <ul>
-                    {subcategoryItem.map((subcategory) =>
-                      <label>
-                        <input 
-                          type="checkbox" 
-                          className={app.inputCheckbox} 
-                          value={subcategory}
-                          checked={subcategoryChecked === subcategory}  
-                          onClick={handleFilterSubcategory}
-                        />
-                        {subcategory}
-                      </label>
-                    )}
+                    {subcategoryItem !== null ?
+                      subcategoryItem.map((subcategory) =>
+                        <label>
+                          <input 
+                            type="checkbox" 
+                            className={app.inputCheckbox} 
+                            value={subcategory}
+                            checked={subcategoryChecked === subcategory}  
+                            onClick={handleFilterSubcategory}
+                          />
+                          {subcategory}
+                        </label>
+                      ): null}
                   </ul> : null
                 }
 
