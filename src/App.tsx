@@ -3,6 +3,7 @@ import { data } from './data';
 import app from './app.module.css';
 import Card from './Components/Cards';
 import SearchBar from './Components/SearchBar';
+import FilterMenu from './Components/FilterMenu';
 
 const dataBases = [...data];
 const filteredCategories = dataBases.map(item => item.product_category);
@@ -91,46 +92,7 @@ export default function App() {
       <aside className={app.filters}>
       
         <ul className={app.list}>
-      
-          <li>Categoria</li>
-      
-          {listCategory.map((category) => {
-            return (
-              
-              <li key={category}>
-                <label>
-                  <input 
-                    type="checkbox" 
-                    className={app.inputCheckbox} 
-                    value={category}
-                    checked={categoryChecked === category}
-                    onClick={handleFilterCategory}
-                  />
-                  {category}
-                </label>
-                
-                {categoryChecked === category ? 
-                  <ul>
-                    {subcategoryItem !== null ?
-                      subcategoryItem.map((subcategory) =>
-                        <label>
-                          <input 
-                            type="checkbox" 
-                            className={app.inputCheckbox} 
-                            value={subcategory}
-                            checked={subcategoryChecked === subcategory}  
-                            onClick={handleFilterSubcategory}
-                          />
-                          {subcategory}
-                        </label>
-                      ): null}
-                  </ul> : null
-                }
-
-              </li>
-            );
-          })}
-
+          <FilterMenu categories={listCategory} styles={app.inputCheckbox} selectedCategory={categoryChecked} handleFilterCategory={handleFilterCategory} subcategories={subcategoryItem} selectedSubcategory={subcategoryChecked} handleFilterSubcategory={handleFilterSubcategory}/>
         </ul>
 
       </aside>
