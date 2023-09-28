@@ -22,6 +22,7 @@ export default function App() {
     
     if (event.currentTarget.value === "") {
         console.log(event.currentTarget.value);
+        setFilteredList(dataBases);
         return filteredList;
     } else {
       const filtered = filteredList.filter(list => 
