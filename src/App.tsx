@@ -23,19 +23,18 @@ export default function App() {
     
     if (event.currentTarget.value === "") {
         console.log(event.currentTarget.value);
-        //setFilteredList(dataBases);
+        setFilteredList(dataBases);
         return filteredList;
     } else {
       const filtered = filteredList.filter(list => 
         list.product_name.toLowerCase().includes(
-          search.toLowerCase()
+          event.currentTarget.value.toLowerCase()
         )
       );
       setFilteredList(filtered);  
     }
   }
 
-  // A barra de busca deve fazer a busca de acordo a palavra vai sendo digitada no input;
   // Após realizar a busca pela barra de busca ao ser apagado seu conteudo a mesma deve exibir os cartões de acordo com o que era exibido antes da busca;
   //Ao ser desmarcada uma subcategoria essa deve exibir os cards de acordo com sua categoria pai
 
@@ -91,12 +90,24 @@ export default function App() {
     
     <main className={app.card}>
       
-      <SearchBar style={app.searchBar} search={search} handleFilter={handleFilter}  />
+      <SearchBar 
+        style={app.searchBar} 
+        search={search} 
+        handleFilter={handleFilter}  
+      />
       
       <aside className={app.filters}>
       
         <ul className={app.list}>
-          <FilterMenu categories={listCategory} styles={app.inputCheckbox} selectedCategory={categoryChecked} handleFilterCategory={handleFilterCategory} subcategories={subcategoryItem} selectedSubcategory={subcategoryChecked} handleFilterSubcategory={handleFilterSubcategory}/>
+          <FilterMenu 
+            categories={listCategory} 
+            styles={app.inputCheckbox} 
+            selectedCategory={categoryChecked} 
+            handleFilterCategory={handleFilterCategory} 
+            subcategories={subcategoryItem} 
+            selectedSubcategory={subcategoryChecked} 
+            handleFilterSubcategory={handleFilterSubcategory}
+          />
         </ul>
 
       </aside>
