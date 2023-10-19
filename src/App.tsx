@@ -17,26 +17,34 @@ export default function App() {
   const [categoryChecked, setCategoryChecked] = useState<string | null>(null);
   const [subcategoryChecked, setSubcategoryChecked] = useState<string | null>("");
   const [subcategoryItem, setSubcategoryItem] = useState <string[] | null>([]);
+  const [previousDatabase, setPreviusDatabase] = useState <string | null>(null);
 
   const handleFilter: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     setSearch(event.currentTarget.value);
     
     if (event.currentTarget.value === "") {
+      if(previousDatabase !== null) {
+        setFilteredList(previousDatabase);
+      } else {
         console.log(event.currentTarget.value);
         setFilteredList(dataBases);
         return filteredList;
+      }
     } else {
       const filtered = filteredList.filter(list => 
         list.product_name.toLowerCase().includes(
           event.currentTarget.value.toLowerCase()
         )
       );
-      setFilteredList(filtered);  
+      if (filtered !== null) {
+        setFilteredList(filtered);
+      } else {
+        return filteredList
+      }
     }
   }
 
-  // Após realizar a busca pela barra de busca ao ser apagado seu conteudo a mesma deve exibir os cartões de acordo com o que era exibido antes da busca;
-  //Ao ser desmarcada uma subcategoria essa deve exibir os cards de acordo com sua categoria pai
+  // Verificar o database intermediario
 
   const handleFilterCategory: React.MouseEventHandler<HTMLInputElement> = (event) => {
     
@@ -48,6 +56,7 @@ export default function App() {
       dataBases.filter(newList => newList.product_category.toLowerCase() === clickedFilter.toLowerCase())
       setFilteredList(newFilter);
       setCategoryChecked(clickedFilter);
+      setPreviusDatabase(newFilter);
 
       const subcategoryItens = dataBases.filter(itens => itens.product_category.toLowerCase() === clickedFilter.toLowerCase());
       const filteredSubcategories = subcategoryItens.map(item => item.product_subcategory);
@@ -60,6 +69,7 @@ export default function App() {
       setCategoryChecked(null);
       setFilteredList(dataBases);
       setSubcategoryItem([]);
+      setPreviusDatabase(null);
     
     }
 
@@ -72,7 +82,7 @@ export default function App() {
     if (subcategoryChecked !== clickedFilter) { 
       
       const newFilter =
-        dataBases.filter(newList => 
+        filteredList.filter(newList => 
           newList.product_subcategory.toLowerCase() === clickedFilter.toLowerCase());
       setFilteredList(newFilter);
       setSubcategoryChecked(clickedFilter);
@@ -80,7 +90,7 @@ export default function App() {
     } else { 
       
       setSubcategoryChecked(null);
-      setFilteredList(dataBases);
+      setFilteredList(previousDatabase);
     
     }
 
